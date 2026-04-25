@@ -4,17 +4,24 @@ import path from 'path';
 import {defineConfig, loadEnv} from 'vite';
 
 export default defineConfig(({mode}) => {
-  const env = loadEnv(mode, '.', '');
+  const env = loadEnv(mode, process.cwd(), '');
   return {
     base: './',
     plugins: [react(), tailwindcss()],
     define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || ""),
+      'process.env.NODE_ENV': JSON.stringify(mode),
+      'process.env': JSON.stringify({}),
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(__dirname, './src'),
       },
+    },
+    build: {
+      outDir: 'dist',
+      assetsDir: 'assets',
+      emptyOutDir: true,
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.

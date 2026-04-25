@@ -20,24 +20,19 @@ Featuring immersive 3D-enhanced learning tools, an intelligent academic assistan
 -   **Premium UI/UX:** Built with a "Scholar's Gothic" aesthetic featuring glassmorphism, 3D icon effects, and fluid animations.
 -   **Ambient Background:** Interactive canvas particles representing mathematical and linguistic symbols.
 
-## 🚀 Deployment (GitHub Pages)
+## 🚀 Deployment & Troubleshooting (Blank Page Fix)
 
-1.  **Add Your Repo Name to `vite.config.ts` (Optional):**
-    If your site is at `your-username.github.io/repo-name/`, the current `base: './'` in `vite.config.ts` should work.
+If you see a **blank page** after deploying to GitHub Pages, follow these steps:
 
-2.  **Set up Gemini API Key on GitHub:**
-    Since you shouldn't put your API key in the code:
-    - Go to your GitHub Repo -> **Settings** -> **Secrets and variables** -> **Actions**.
-    - Click **New repository secret**.
-    - Name: `GEMINI_API_KEY`
-    - Value: `YOUR_ACTUAL_KEY`
-
-3.  **Update GitHub Actions:**
-    If you are using a GitHub Action to deploy, make sure it passes the secret:
-    ```yaml
-    env:
-      VITE_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-    ```
+1.  **Check the URL:** Ensure you are visiting `https://your-username.github.io/repo-name/`. (Note the trailing slash).
+2.  **Verify Vite Base Path:** In `vite.config.ts`, `base: './'` is used to ensure relative paths.
+3.  **GitHub Pages Source:**
+    - Go to your Repo -> **Settings** -> **Pages**.
+    - Under **Build and deployment**, ensure **Source** is set to **GitHub Actions**.
+4.  **Inspect Console:** Right-click the blank page -> **Inspect** -> **Console**. Look for 404 errors. If assets are not loading, the path in `base` might need to match your repository name exactly (e.g., `/remix-university-portal/`).
+5.  **Set up Gemini API Key:**
+    - Go to Repo -> **Settings** -> **Secrets and variables** -> **Actions**.
+    - Add `GEMINI_API_KEY` as a secret.
 
 ## 🛠️ Installation & Setup
 
