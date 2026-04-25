@@ -20,14 +20,24 @@ Featuring immersive 3D-enhanced learning tools, an intelligent academic assistan
 -   **Premium UI/UX:** Built with a "Scholar's Gothic" aesthetic featuring glassmorphism, 3D icon effects, and fluid animations.
 -   **Ambient Background:** Interactive canvas particles representing mathematical and linguistic symbols.
 
-## 🚀 Tech Stack
+## 🚀 Deployment (GitHub Pages)
 
--   **Framework:** [React 18+](https://react.dev/) with [Vite](https://vitejs.dev/)
--   **AI Engine:** [Google Generative AI (Gemini)](https://ai.google.dev/)
--   **Styling:** [Tailwind CSS 4.0](https://tailwindcss.com/)
--   **Animations:** [Motion (Framer Motion)](https://motion.dev/)
--   **Icons:** [Lucide React](https://lucide.dev/)
--   **Visual Effects:** `canvas-confetti` and Custom HTML5 Canvas Particles
+1.  **Add Your Repo Name to `vite.config.ts` (Optional):**
+    If your site is at `your-username.github.io/repo-name/`, the current `base: './'` in `vite.config.ts` should work.
+
+2.  **Set up Gemini API Key on GitHub:**
+    Since you shouldn't put your API key in the code:
+    - Go to your GitHub Repo -> **Settings** -> **Secrets and variables** -> **Actions**.
+    - Click **New repository secret**.
+    - Name: `GEMINI_API_KEY`
+    - Value: `YOUR_ACTUAL_KEY`
+
+3.  **Update GitHub Actions:**
+    If you are using a GitHub Action to deploy, make sure it passes the secret:
+    ```yaml
+    env:
+      VITE_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    ```
 
 ## 🛠️ Installation & Setup
 
